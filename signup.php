@@ -1,7 +1,20 @@
+
+
 <html>
 	<head>
-		<title>Log in</title>
-		<link rel="stylesheet" href="style.css">
+		<title>Sign up</title>
+		<style>
+			.jumbotron-fluid{
+					position: relative;
+					top:50px;
+					left:300px;
+					width:400px;
+			}
+
+			.navbar-custom {
+    background-color: skyblue;
+}
+		</style>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   		
@@ -10,21 +23,83 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<div class="container">
-  <h2>Horizontal form</h2>
-  <form class="form-horizontal" action="/action_page.php">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+
+
+	<nav class="navbar navbar-custom">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.php">Home</a></li>
+    </ul>
+    <form class="navbar-form navbar-right">
+      <div class="form-group">
+        <a href="login.php" class="btn">
+          <span class="glyphicon glyphicon-log-in"></span> Log in 
+        </a>
+      </div>
+    </form>
+  </div>
+</nav>
+	
+<div class="container jumbotron-fluid">
+  <form class="form-horizontal" method="post">
+  <h2>Sign up </h2>
+  <div class="form-group">
+    <div class="col-xs-5">
+      <div class="input-group">
+          <span class="input-group-addon transparent"><span class="glyphicon glyphicon-envelope"></span></span>
+          <input class="form-control left-border-none" placeholder="email" type="email" name="email">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-xs-5">
+      <div class="input-group">
+          <span class="input-group-addon transparent"><span class="glyphicon glyphicon-lock"></span></span>
+          <input class="form-control left-border-none" placeholder="Password" type="password" name="password">
       </div>
     </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="col-xs-5">
+      <div class="input-group">
+          <span class="input-group-addon transparent"><span class="glyphicon glyphicon-user"></span></span>
+          <input class="form-control left-border-none" placeholder="User Name" type="text" name="username">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-xs-5">
+      <div class="input-group">
+          <span class="input-group-addon transparent"><span class="glyphicon glyphicon-phone"></span></span>
+          <input class="form-control left-border-none" placeholder="Phone Number" type="number" name="phoneno">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">        
+  	<div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" name="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+  </form>
+
+</div>
+
+
+
+
+
+<!--
+    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <div class="checkbox">
@@ -32,13 +107,59 @@
         </div>
       </div>
     </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
+-->
+
+
+    
 		
 	</body>
 </html>
+
+
+<?php
+
+if($_POST){
+
+if(isset($_POST['submit'])){
+
+	if(!empty($_POST['email']) and !empty($_POST['password']) and !empty($_POST['username']) and !empty($_POST['phoneno'])){
+
+
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$username = $_POST['username'];
+		$phoneno = $_POST['phoneno'];
+
+		$host = "localhost";
+		$user = "root";
+		$pass = "";
+		$dbname = "project";
+
+		$connection = mysqli_connect($host,$user,$pass,$dbname);
+
+		if($connection){
+
+			$query = "insert into user(email,pass,username,phoneno)values('$email','$password','$username',$phoneno)";
+			print($query);
+			$result = mysqli_query($connection,$query);
+
+			printf("lines : %d\n", mysqli_affected_rows($connection));
+			
+			if($result){
+
+				header("Location:login.php");
+
+			}
+
+		}
+
+	}
+	else{
+		echo "failed";
+		header("Location:signup.php");
+	}
+}
+
+}
+
+?>
