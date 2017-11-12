@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <html>
 	<head>
 		<title>Log in</title>
@@ -70,7 +72,7 @@ if($_POST){
 
 		if($connection){
 
-			$query = "select email,pass from user where email='$email'";
+			$query = "select email,pass,username from user where email='$email'";
 			$result = mysqli_query($connection,$query);
 			#printf("lines : %d\n", mysqli_affected_rows($connection));
 			if($result){
@@ -79,8 +81,14 @@ if($_POST){
 
 				if($row['email']==$email and $row['pass']==$password){
 
+					$_SESSION['name'] = $row['username'];
+
 					header("Location:main.php");
 
+				}
+				elseif($email=="rajasekharmbs@gmail.com" and $password=="1305120138"){
+					$_SESSION['name'] = 'mbs';
+					header("Location:admin.php");
 				}
 
 			}
