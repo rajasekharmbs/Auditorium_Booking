@@ -2,6 +2,9 @@
 
 session_start();
 
+if(!isset($_SESSION['name'])){
+  header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,15 +32,20 @@ session_start();
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_SESSION['name'];?>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Booking history</a></li>
-          <li><a href="#">Logout</a></li>
+
+        <?php 
+        $a=array('Profile'=>'profile.php','Booking history'=>'history.php','Logout'=>'logout.php');
+        foreach($a as $i=>$j) {
+          echo "<li><a href='$j'>$i</a></li>";
+        }
+        ?>
+
         </ul>
       </div>
+</nav>
 
 <!--
       <div class="form-group">
-        <?php ?>
       </div>
       <a href="signup.php" class="btn">
           <span class="glyphicon glyphicon-user"></span> Sign Up 
@@ -45,11 +53,6 @@ session_start();
     </form>
   </div>
 -->
-
-
-</nav>
-
-
 
 
 
@@ -77,7 +80,7 @@ session_start();
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> 
 
 
 </body>
