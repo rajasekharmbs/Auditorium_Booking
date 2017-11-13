@@ -3,13 +3,25 @@
 session_start();
 
 if(!isset($_SESSION['name'])){
-  header("Location:index.php");
+  header("Location:login.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Landing Page</title>
+  <style>
+    #footer-main{
+    position: absolute;
+    background-color: black;
+    color: white;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 13px;
+}
+
+  </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
@@ -18,7 +30,7 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar ">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" disabled="disabled">S & A</a>
@@ -29,7 +41,7 @@ if(!isset($_SESSION['name'])){
     <form class="navbar-form navbar-right">
 
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_SESSION['name'];?>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_SESSION['name'];?>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
 
@@ -41,19 +53,41 @@ if(!isset($_SESSION['name'])){
         ?>
 
         </ul>
+        </form>
       </div>
 </nav>
 
-<!--
-      <div class="form-group">
-      </div>
-      <a href="signup.php" class="btn">
-          <span class="glyphicon glyphicon-user"></span> Sign Up 
-      </a>
-    </form>
-  </div>
--->
+<center><h3>Select state and city</h3></center>
+<br/>
 
+<div class="container">
+    <div class="row">
+      
+      <div class="col-sm-2">
+      </div>
+        <form method="post">
+        <div class="col-sm-4">
+          <select name="state" class="form-control">
+            <option>Punjab</option>
+            <option>Andhra Pradesh</option>
+            <option>Karnataka</option>
+          </select>
+        </div>
+        
+        <div class="col-sm-4">
+          <select name="city" class="form-control">
+            <option>Jalandhar</option>
+            <option>Vijayawada</option>
+            <option>Banglore</option>
+          </select>
+        </div>        
+    </div>
+    <br/>
+    <br/>
+    </div>
+      <center><button type="submit" name="submit" value="submit" class="btn btn-default">  Submit  </button></center>
+    </form> 
+</div>
 
 
 
@@ -85,3 +119,15 @@ if(!isset($_SESSION['name'])){
 
 </body>
 </html>
+
+
+<?php
+if(isset($_POST['submit'])){
+
+  if(isset($_POST['state']) and isset($_POST['city'])){
+    header("Location:audi.php");
+  }
+  
+}
+
+?>
