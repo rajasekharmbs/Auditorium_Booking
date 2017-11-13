@@ -7,6 +7,6 @@ session_destroy();
 <html>
 <head>
 	<title>Logged out</title>
-	<center><a href="index.php">click to login again</a></center>
+	<center><a href="login.php">click here to login again</a></center>
 </head>
 </html>
