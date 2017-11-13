@@ -17,3 +17,18 @@ body{
 	left:350px;
 	width:500px;
 }
+
+.form-horizontal{
+/* text-align:right; */
+text-align:left;
+background-color:#ffa;
+}
+
+.transparent {
+    background-color: transparent !important;
+    box-shadow: inset 0px 1px 0 rgba(0,0,0,.075);
+ }
+ .left-border-none {
+    border-left:none !important;
+    box-shadow: inset 0px 1px 0 rgba(0,0,0,.075);
+ }
