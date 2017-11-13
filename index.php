@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>Landing Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
@@ -20,18 +20,18 @@
     </ul>
     <form class="navbar-form navbar-right">
       <div class="form-group">
-        <a href="#" class="btn">
+        <a href="login.php" class="btn">
           <span class="glyphicon glyphicon-log-in"></span> Log in 
         </a>
       </div>
-      <a href="#" class="btn">
+      <a href="signup.php" class="btn">
           <span class="glyphicon glyphicon-user"></span> Sign Up 
       </a>
     </form>
   </div>
 </nav>
 
-
+<center><h3>Samples</h3></center>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
