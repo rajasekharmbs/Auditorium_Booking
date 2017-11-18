@@ -20,6 +20,12 @@ if(!isset($_SESSION['name'])){
     left: 0;
     font-size: 13px;
 }
+.jumbotron-fluid{
+	position: relative;
+	top:100px;
+	left:300px;
+	width:500px;
+}
 
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -57,11 +63,26 @@ if(!isset($_SESSION['name'])){
       </div>
 </nav>
 
-
+<form method="post">
+<center><button type="submit" name="allavaial" class="btn btn-primary">Make all available</button></center>
+</form>
 <div class="container">
 
-
-
+<div class="jumbotron-fluid">
+		<form method="post">
+		  <div class="form-group">
+		    <input type="text" name="state" class="form-control" id="exampleInputEmail1"  placeholder="State">
+		    
+		  </div>
+		  <div class="form-group">
+		    <input type="text" name="city" class="form-control" id="exampleInputPassword1" placeholder="City">
+		  </div>
+		  <div class="form-group">
+		    <input type="text" name="audiname" class="form-control" id="exampleInputPassword1" placeholder="Name">
+		  </div>
+		  <center><button type="submit" name="submit" class="btn btn-primary">Add audi</button></center>
+		</form>	
+	</div>
 </div>
 
 
@@ -97,3 +118,43 @@ if(!isset($_SESSION['name'])){
 </body>
 </html>
 
+<?php
+if(isset($_POST['submit'])){
+	$connection = mysqli_connect("localhost","root","","project");
+	if($connection){
+		if(!empty($_POST['state']) and !empty($_POST['city']) and !empty($_POST['audiname'])){
+			$state = $_POST['state'];
+			$city = $_POST['city'];
+			$name = $_POST['audiname'];
+			$query = "insert into audito(state,city,aname,visible) values('$state','$city','$name',1)";
+			$result = mysqli_query($connection,$query);
+			if($result){
+				echo "added successfully";
+				header("Location:admin.php");
+			}
+			else{
+				echo "something went wrong";
+			}
+		}
+		else{
+			?>
+			<script>
+			alert("fields cannot be empty");
+			</script>
+			<?php
+		}
+	}
+
+}
+?>
+
+
+<?php
+if(isset($_POST['allavaial'])){
+	$connection = mysqli_connect("localhost","root","","project");
+	if($connection){
+	$quer = "update audito set visible=1";
+  	$resul = mysqli_query($connection,$quer);
+  }
+}
+?>
