@@ -21,6 +21,8 @@ if(isset($_POST['submit'])){
 
 		if($connection){
 
+			$password = md5($password);
+
 			$query = "insert into user(email,pass,username,phoneno)values('$email','$password','$username',$phoneno)";
 			print($query);
 			$result = mysqli_query($connection,$query);
