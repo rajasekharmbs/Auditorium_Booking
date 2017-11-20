@@ -4,7 +4,7 @@ $na=$_SESSION['name'];
 ?>
 <html>
   <head>
-    <title>Log in</title>
+    <title>Booking history</title>
     <style>
     #footer-main{
     position: absolute;
@@ -63,7 +63,7 @@ $na=$_SESSION['name'];
       $city = $_SESSION['city'];
       $query = "select * from audito where user='$na'";
       $result = mysqli_query($connection,$query);
-      if($result){
+      if($result and mysqli_num_rows($result)>0){
         while($row = mysqli_fetch_assoc($result)){
           /*echo $row["state"];
           echo $row["city"];
@@ -74,7 +74,7 @@ $na=$_SESSION['name'];
             <form method="post">
               <div class="col-sm-4">
                 <center><h3 style="font-family:san-serief;color:#DD4124"><?php echo $row["aname"];?></h3></center>
-                <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
+                <img src="2.jpg" alt="audi" style="width:350px;"><br/><br/>
               </div>
             </form>
               <div class="col-sm-1">
@@ -89,7 +89,13 @@ $na=$_SESSION['name'];
 
       }
       else{
-        echo "no result fetched";
+        ?>
+          <div class="container">
+            <div class="alert alert-danger">
+              <strong>Haven't booked any</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="main.php">click here to book</a>
+            </div>
+          </div>
+        <?php
       }
 
   }
@@ -105,27 +111,27 @@ $na=$_SESSION['name'];
 
   
 <footer id="footer-main">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                        <li><a href="">About us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://bradhussey.ca/" target="_blank">M.B.S.Rajasekhar</a></h6>
-                </div>
-            </div>
-        </div>
-    </footer> 
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <ul class="list-unstyled">
+            <li><a href="http://www.mbs.eudaan.com" target="_blank">About Me</a></li>
+          </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <a href="https://www.facebook.com/mbs.rajasekhar"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+          <a href="https://twitter.com/mbsrajasekhar"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://www.mbs.eudaan.com" target="_blank">M.B.S.Rajasekhar</a></h6>
+      </div>
+    </div>
+  </div>
+</footer> 
+
 
 
     
