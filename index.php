@@ -7,10 +7,21 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    #footer-main{
+    position: absolute;
+    background-color: black;
+    color: white;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 13px;
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" disabled="disabled">S & A</a>
@@ -25,14 +36,14 @@
         </a>
       </div>
       <a href="signup.php" class="btn">
-          <span class="glyphicon glyphicon-user"></span> Sign Up 
+        <span class="glyphicon glyphicon-user"></span> Sign Up 
       </a>
     </form>
   </div>
 </nav>
 
-<center><h3>Samples</h3></center>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<center><h3 style="color:red;font-size:25px">Auditorium Samples</h3></center>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 800px; margin: 0 auto">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -43,15 +54,24 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="1.jpg" alt="Los Angeles">
+      <img src="1.jpg" alt="Auditorium1">
+      <div class="carousel-caption">
+          <h3>Blue coloured</h3>
+      </div>
     </div>
 
     <div class="item">
-      <img src="2.jpg" alt="Chicago">
+      <img src="2.jpg" alt="Auditorium2">
+      <div class="carousel-caption">
+          <h3>Red coloured</h3>
+      </div>
     </div>
 
     <div class="item">
-      <img src="3.jpg" alt="New York">
+      <img src="3.jpg" alt="Auditorium3">
+      <div class="carousel-caption">
+          <h3>General Auditorium</h3>
+      </div>
     </div>
   </div>
 
@@ -71,28 +91,28 @@
 
 
 
- <footer id="footer-main">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                        <li><a href="">About us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://bradhussey.ca/" target="_blank">M.B.S.Rajasekhar</a></h6>
-                </div>
-            </div>
-        </div>
-    </footer>
+<footer id="footer-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <ul class="list-unstyled">
+            <li><a href="#" target="_blank">About Me</a></li>
+          </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h6>Copyright &copy;<?php echo date('Y');?> <a href="#" target="_blank">M.B.S.Rajasekhar</a></h6>
+      </div>
+    </div>
+  </div>
+</footer> 
+
 
 
 </body>
