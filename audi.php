@@ -1,11 +1,13 @@
 <?php 
 
 session_start();
+$na=$_SESSION['name'];
 
 if(!isset($_SESSION['name'])){
   header("Location:login.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 
-<nav class="navbar navbar ">
+<nav class="navbar navbar-inverse bg-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" disabled="disabled">S & A</a>
@@ -57,48 +59,7 @@ if(!isset($_SESSION['name'])){
       </div>
 </nav>
 
-
-
-
-<!--
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-1">
-    </div>
-      <div class="col-sm-5">
-        <h3>dh</h3>
-        <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
-        <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
-      </div>
-    <div class="col-sm-1">
-    </div> 
-    <div class="col-sm-5">
-      <h3>dh</h3>
-      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
-      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
-    </div>
-    <div class="col-sm-1">
-    </div> 
-    <div class="col-sm-5">
-      <h3>dh</h3>
-      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
-      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
-    </div>
-    <div class="col-sm-1">
-    </div> 
-    <div class="col-sm-5">
-      <h3>dh</h3>
-      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
-      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
-    </div>
-  </div>
-  <br/>
-  <br/>
-</div>  
-
--->
-
+<center><h3 style="color:#98DDDE">Showing Results:</h3></center><br/>
 <div class="container">
   <div class="row">
 <?php
@@ -119,13 +80,13 @@ if(!isset($_SESSION['name'])){
             </div>
             <form method="post">
               <div class="col-sm-4">
-                <h3><?php echo $row["aname"];?></h3>
+                <center><h3 style="font-family:san-serief;color:#DD4124"><?php echo $row["aname"];?></h3></center>
                 <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
-                <center><button type="submit" name="book" value="<?= $row['aname']?>" class="btn btn-default">  Book  </button></center>
+                <center><button type="submit" name="book" value="<?= $row['aname']?>" class="btn btn-default">Book</button></center>
               </div>
             </form>
-              <div class="col-sm-1">
-              </div>  
+            <div class="col-sm-1">
+            </div>  
           <?php
         }
         mysqli_free_result($result);
@@ -142,13 +103,14 @@ if(!isset($_SESSION['name'])){
   }
 
 ?>
+
 <?php
 
 if(isset($_POST['book'])){
 
   $nam=$_POST['book'];
 
-  $query1 = "update audito set visible=0 where aname='$nam'";
+  $query1 = "update audito set visible=0,user='$na' where aname='$nam'";
   $resul = mysqli_query($connection,$query1);
   if($resul){
     header("Location:sucess.php");
@@ -159,7 +121,7 @@ if(isset($_POST['book'])){
 
 }
 ?>
-
+<br/>
 <br/>
 
  <footer id="footer-main">
