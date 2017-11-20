@@ -1,2 +1,2 @@
 # Auditorium_Booking
-Web application to book auditorium. 
+Web application to book Auditoriums. 
