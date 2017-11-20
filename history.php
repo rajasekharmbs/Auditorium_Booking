@@ -92,7 +92,7 @@ $na=$_SESSION['name'];
         ?>
           <div class="container">
             <div class="alert alert-danger">
-              <strong>Haven't booked any</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="main.php">click here to book</a>
+              <strong>Haven't booked any!!!</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="main.php">click here to book</a>
             </div>
           </div>
         <?php
@@ -101,14 +101,6 @@ $na=$_SESSION['name'];
   }
 
 ?>
-
-
-
-
-
-
-
-
   
 <footer id="footer-main">
   <div class="container">
@@ -137,57 +129,3 @@ $na=$_SESSION['name'];
     
   </body>
 </html>
-
-
-
-<?php
-if($_POST){
-  if(isset($_POST['submit'])){
-  if(!empty($_POST['email']) and !empty($_POST['password'])){
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $dbname = "project";
-
-    $connection = mysqli_connect($host,$user,$pass,$dbname);
-
-    if($connection){
-
-      $query = "select email,pass,username from user where email='$email'";
-      $result = mysqli_query($connection,$query);
-      #printf("lines : %d\n", mysqli_affected_rows($connection));
-      if($result){
-
-        $row = mysqli_fetch_assoc($result);
-
-        if($row['email']==$email and $row['pass']==$password){
-
-          $_SESSION['name'] = $row['username'];
-
-          header("Location:main.php");
-
-        }
-        elseif($email=="rajasekharmbs@gmail.com" and $password=="1305120138"){
-          $_SESSION['name'] = 'mbs';
-          header("Location:admin.php");
-        }
-
-      }
-
-      mysqli_close($connection);
-
-    }
-    else{
-      echo "connection not established";
-    }
-
-  }
-}
-}
-
-
-?>
