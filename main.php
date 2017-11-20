@@ -9,7 +9,7 @@ if(!isset($_SESSION['name'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Landing Page</title>
+  <title>Main</title>
   <style>
     #footer-main{
     position: absolute;
@@ -30,7 +30,7 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 
-<nav class="navbar navbar ">
+<nav class="navbar navbar-inverse bg-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" disabled="disabled">S & A</a>
@@ -41,7 +41,7 @@ if(!isset($_SESSION['name'])){
     <form class="navbar-form navbar-right">
 
       <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_SESSION['name'];?>
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><?php echo ucfirst($_SESSION['name']);?>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
 
@@ -57,8 +57,8 @@ if(!isset($_SESSION['name'])){
       </div>
 </nav>
 
-<center><h3>Select state and city</h3></center>
-<br/>
+<center><h3 style="color:green">Select State and City to Book the Auditorium(s)</h3></center>
+<br/><br/><br/>
 
 <div class="container">
     <div class="row">
@@ -77,6 +77,8 @@ if(!isset($_SESSION['name'])){
         <div class="col-sm-4">
           <select name="city" class="form-control">
             <option>Jalandhar</option>
+            <option>Phagwara</option>
+            <option>Ludhiana</option>
             <option>Vijayawada</option>
             <option>Banglore</option>
           </select>
@@ -85,7 +87,7 @@ if(!isset($_SESSION['name'])){
     <br/>
     <br/>
     </div>
-      <center><button type="submit" name="submit" value="submit" class="btn btn-default">  Submit  </button></center>
+      <center><button type="submit" name="submit" value="submit" class="btn btn-primary">  Submit  </button></center>
     </form> 
 </div>
 
@@ -93,28 +95,27 @@ if(!isset($_SESSION['name'])){
 
 
 
- <footer id="footer-main">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                        <li><a href="">About us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://bradhussey.ca/" target="_blank">M.B.S.Rajasekhar</a></h6>
-                </div>
-            </div>
-        </div>
-    </footer> 
+<footer id="footer-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <ul class="list-unstyled">
+            <li><a href="#" target="_blank">About Me</a></li>
+          </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h6>Copyright &copy;<?php echo date('Y');?> <a href="#" target="_blank">M.B.S.Rajasekhar</a></h6>
+      </div>
+    </div>
+  </div>
+</footer> 
 
 
 </body>
@@ -124,9 +125,13 @@ if(!isset($_SESSION['name'])){
 <?php
 if(isset($_POST['submit'])){
 
-  if(isset($_POST['state']) and isset($_POST['city'])){
+  /*if(isset($_POST['state']) and isset($_POST['city'])){
     header("Location:audi.php");
-  }
+  }*/
+  $_SESSION['state'] = $_POST['state'];
+  $_SESSION['city'] = $_POST['city'];
+  
+  header("Location:audi.php");
   
 }
 
