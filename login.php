@@ -4,6 +4,17 @@ session_start();
 <html>
 	<head>
 		<title>Log in</title>
+		<style>
+    #footer-main{
+    position: absolute;
+    background-color: black;
+    color: white;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 13px;
+}
+  </style>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +25,7 @@ session_start();
 	</head>
 	<body>
 
-			<nav class="navbar navbar-custom">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>
@@ -49,6 +60,30 @@ session_start();
 		</form>	
 	</div>
 	</div>
+<footer id="footer-main">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://bradhussey.ca/" target="_blank">M.B.S.Rajasekhar</a></h6>
+                </div>
+            </div>
+        </div>
+    </footer> 
+
+
 		
 	</body>
 </html>
@@ -79,7 +114,7 @@ if($_POST){
 
 				$row = mysqli_fetch_assoc($result);
 
-				if($row['email']==$email and $row['pass']==$password){
+				if($row['email']==$email and $row['pass']==md5($password)){
 
 					$_SESSION['name'] = $row['username'];
 
