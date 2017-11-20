@@ -20,11 +20,26 @@ if(!isset($_SESSION['name'])){
     left: 0;
     font-size: 13px;
 }
-.jumbotron-fluid{
+.jumbotron{
 	position: relative;
-	top:100px;
+	top:75px;
 	left:300px;
 	width:500px;
+	background-color:#f2f2f2 !important;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-color:skyblue;
+}
+body {
+    background-image: url("2.jpg");
 }
 
   </style>
@@ -36,7 +51,7 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 
-<nav class="navbar navbar ">
+<nav class="navbar navbar-inverse ">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" disabled="disabled">S & A</a>
@@ -64,11 +79,11 @@ if(!isset($_SESSION['name'])){
 </nav>
 
 <form method="post">
-<center><button type="submit" name="allavaial" class="btn btn-primary">Make all available</button></center>
+<center><button type="submit" name="allavaial" class="btn btn-danger">Make all available</button></center>
 </form>
 <div class="container">
 
-<div class="jumbotron-fluid">
+<div class="jumbotron">
 		<form method="post">
 		  <div class="form-group">
 		    <input type="text" name="state" class="form-control" id="exampleInputEmail1"  placeholder="State">
@@ -126,7 +141,7 @@ if(isset($_POST['submit'])){
 			$state = $_POST['state'];
 			$city = $_POST['city'];
 			$name = $_POST['audiname'];
-			$query = "insert into audito(state,city,aname,visible) values('$state','$city','$name',1)";
+			$query = "insert into audito(state,city,aname,visible,user) values('$state','$city','$name',1,'*')";
 			$result = mysqli_query($connection,$query);
 			if($result){
 				echo "added successfully";
@@ -153,7 +168,7 @@ if(isset($_POST['submit'])){
 if(isset($_POST['allavaial'])){
 	$connection = mysqli_connect("localhost","root","","project");
 	if($connection){
-	$quer = "update audito set visible=1";
+	$quer = "update audito set visible=1,user='*'";
   	$resul = mysqli_query($connection,$quer);
   }
 }
