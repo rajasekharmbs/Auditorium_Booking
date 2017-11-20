@@ -11,10 +11,10 @@ if(!isset($_SESSION['name'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Landing Page</title>
+  <title>Auditoriums</title>
   <style>
     #footer-main{
-    position: relative;
+    position: absolute;
     background-color: black;
     color: white;
     right: 0;
@@ -59,6 +59,47 @@ if(!isset($_SESSION['name'])){
       </div>
 </nav>
 
+
+
+
+<!--
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+    </div>
+      <div class="col-sm-5">
+        <h3>dh</h3>
+        <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
+        <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
+      </div>
+    <div class="col-sm-1">
+    </div> 
+    <div class="col-sm-5">
+      <h3>dh</h3>
+      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
+      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
+    </div>
+    <div class="col-sm-1">
+    </div> 
+    <div class="col-sm-5">
+      <h3>dh</h3>
+      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
+      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
+    </div>
+    <div class="col-sm-1">
+    </div> 
+    <div class="col-sm-5">
+      <h3>dh</h3>
+      <img src="1.jpg" alt="audi" style="width:350px;"><br/><br/>
+      <center><button type="submit" name="book1" value="book" class="btn btn-default">  Book  </button></center>
+    </div>
+  </div>
+  <br/>
+  <br/>
+</div>  
+
+-->
 <center><h3 style="color:#98DDDE">Showing Results:</h3></center><br/>
 <div class="container">
   <div class="row">
@@ -70,7 +111,7 @@ if(!isset($_SESSION['name'])){
       $city = $_SESSION['city'];
       $query = "select * from audito where state='$state' and city='$city' and visible=1";
       $result = mysqli_query($connection,$query);
-      if($result){
+      if($result and mysqli_num_rows($result)>0){
         while($row = mysqli_fetch_assoc($result)){
           /*echo $row["state"];
           echo $row["city"];
@@ -97,7 +138,13 @@ if(!isset($_SESSION['name'])){
 
       }
       else{
-        echo "no result fetched";
+        ?>
+        <div class="container">
+  <div class="alert alert-info">
+    <strong>All booked or we don't have any Audis in the selected city</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="main.php">click here to Select another city</a>
+  </div>
+</div>
+        <?php
       }
 
   }
@@ -124,28 +171,28 @@ if(isset($_POST['book'])){
 <br/>
 <br/>
 
- <footer id="footer-main">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                        <li><a href="">About us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <ul class="list-unstyled">
-                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
-                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="#" target="_blank">M.B.S.Rajasekhar</a></h6>
-                </div>
-            </div>
-        </div>
+<footer id="footer-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+          <ul class="list-unstyled">
+            <li><a href="#" target="_blank">About Me</a></li>
+          </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h6>Copyright &copy;<?php echo date('Y');?> <a href="#" target="_blank">M.B.S.Rajasekhar</a></h6>
+      </div>
+    </div>
+  </div>
 </footer> 
+
 
 
 </body>
