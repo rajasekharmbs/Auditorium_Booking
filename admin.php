@@ -111,18 +111,18 @@ body {
     <div class="row">
       <div class="col-sm-3">
           <ul class="list-unstyled">
-            <li><a href="http://www.mbs.eudaan.com" target="_blank">About Me</a></li>
+            <li><a href="#" target="_blank">About Me</a></li>
           </ul>
       </div>
       <div class="col-sm-3">
         <ul class="list-unstyled">
-          <a href="https://www.facebook.com/mbs.rajasekhar"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
-          <a href="https://twitter.com/mbsrajasekhar"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+          <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
           <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
         </ul>
       </div>
       <div class="col-sm-3">
-        <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://www.mbs.eudaan.com" target="_blank">M.B.S.Rajasekhar</a></h6>
+        <h6>Copyright &copy;<?php echo date('Y');?> <a href="#" target="_blank">M.B.S.Rajasekhar</a></h6>
       </div>
     </div>
   </div>
