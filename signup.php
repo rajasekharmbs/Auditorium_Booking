@@ -1,9 +1,63 @@
+<?php
+
+if($_POST){
+
+if(isset($_POST['submit'])){
+
+	if(!empty($_POST['email']) and !empty($_POST['password']) and !empty($_POST['username']) and !empty($_POST['phoneno'])){
+
+
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$username = $_POST['username'];
+		$phoneno = $_POST['phoneno'];
+
+		$host = "localhost";
+		$user = "root";
+		$pass = "";
+		$dbname = "project";
+
+		$connection = mysqli_connect($host,$user,$pass,$dbname);
+
+		if($connection){
+
+			$query = "insert into user(email,pass,username,phoneno)values('$email','$password','$username',$phoneno)";
+			print($query);
+			$result = mysqli_query($connection,$query);
+			if($result){
+
+				header("Location:login.php");
+
+			}
+
+		}
+
+	}
+	else{
+		echo "failed";
+		header("Location:signup.php");
+	}
+}
+
+}
+
+?>
+
 
 
 <html>
 	<head>
 		<title>Sign up</title>
 		<style>
+		#footer-main{
+		    position: absolute;
+		    background-color: black;
+		    color: white;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    font-size: 13px;
+		}
 			.jumbotron-fluid{
 					position: relative;
 					top:50px;
@@ -78,7 +132,7 @@
     <div class="col-xs-5">
       <div class="input-group">
           <span class="input-group-addon transparent"><span class="glyphicon glyphicon-phone"></span></span>
-          <input class="form-control left-border-none" placeholder="Phone Number" type="number" name="phoneno">
+          <input class="form-control left-border-none" placeholder="Phone Number" type="text" name="phoneno">
       </div>
     </div>
   </div>
@@ -97,69 +151,31 @@
 
 
 
-
-<!--
-    
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
+<footer id="footer-main">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="list-unstyled">
+                    <a href="#"><i class="fa fa-facebook-official" style="font-size:24px"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square" style="font-size:24px"></i></a>
+                    <a href="#"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                  <h6>Copyright &copy;<?php echo date('Y');?> <a href="http://bradhussey.ca/" target="_blank">M.B.S.Rajasekhar</a></h6>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
--->
-
-
+    </footer> 
     
 		
 	</body>
 </html>
 
 
-<?php
-
-if($_POST){
-
-if(isset($_POST['submit'])){
-
-	if(!empty($_POST['email']) and !empty($_POST['password']) and !empty($_POST['username']) and !empty($_POST['phoneno'])){
-
-
-		$email = $_POST['email'];
-		$password = $_POST['password'];
-		$username = $_POST['username'];
-		$phoneno = $_POST['phoneno'];
-
-		$host = "localhost";
-		$user = "root";
-		$pass = "";
-		$dbname = "project";
-
-		$connection = mysqli_connect($host,$user,$pass,$dbname);
-
-		if($connection){
-
-			$query = "insert into user(email,pass,username,phoneno)values('$email','$password','$username',$phoneno)";
-			print($query);
-			$result = mysqli_query($connection,$query);
-
-			printf("lines : %d\n", mysqli_affected_rows($connection));
-			
-			if($result){
-
-				header("Location:login.php");
-
-			}
-
-		}
-
-	}
-	else{
-		echo "failed";
-		header("Location:signup.php");
-	}
-}
-
-}
-
-?>
